@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NEXORA Student Hub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">N</div><div><strong>NEXORA</strong><small>STUDENT HUB</small></div></div>
+      <p class="nav-label">WORKSPACE</p>
+      <a class="nav-item active" href="#overview">▦ <span>Overview</span></a>
+      <a class="nav-item" href="#tasks">✓ <span>My tasks</span></a>
+      <a class="nav-item" href="#resources">⌘ <span>Learning resources</span></a>
+      <a class="nav-item" href="#unstop">⚡ <span>Unstop Hub</span></a>
+      <a class="nav-item" href="#scraper">↗ <span>Web research</span></a>
+      <div class="sidebar-bottom"><div class="avatar">S</div><div><strong>Student</strong><small>Your learning space</small></div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div><span class="eyebrow">YOUR PERSONAL LEARNING SPACE</span><h1>Good morning, Student <span>✦</span></h1><p>Learn. Grow. Achieve together.</p></div><div class="date-pill" id="todayDate">NEXORA</div></header>
+
+      <section id="overview" class="stats-grid">
+        <article class="stat-card purple"><div class="stat-icon">▤</div><span>Tasks to do</span><strong id="pendingCount">—</strong><small>Keep your momentum</small></article>
+        <article class="stat-card blue"><div class="stat-icon">✓</div><span>Tasks completed</span><strong id="doneCount">—</strong><small>Every step counts</small></article>
+        <article class="stat-card peach"><div class="stat-icon">⌘</div><span>Resources</span><strong id="resourceCount">—</strong><small>Ready for your next lesson</small></article>
+      </section>
+
+      <section id="tasks" class="panel">
+        <div class="section-heading"><div><span class="eyebrow">STAY ON TRACK</span><h2>My tasks</h2></div><span class="soft-chip">Personal planner</span></div>
+        <form id="taskForm" class="task-form">
+          <input id="taskTitle" maxlength="160" placeholder="Add a task (e.g., revise Data Science)" required>
+          <select id="taskCategory"><option>Study</option><option>Assignment</option><option>Project</option><option>Exam</option></select>
+          <input id="taskDue" placeholder="Due date (optional)">
+          <button type="submit">+ Add task</button>
+        </form>
+        <div id="taskList" class="task-list"><p class="muted">Loading tasks…</p></div>
+      </section>
+
+      <section id="resources" class="panel">
+        <div class="section-heading"><div><span class="eyebrow">KEEP EXPLORING</span><h2>Learning resources</h2></div><span class="soft-chip">Curated links</span></div>
+        <div id="resourceList" class="resource-grid"><p class="muted">Loading resources…</p></div>
+      </section>
+
+      <section id="unstop" class="panel">
+        <div class="section-heading">
+          <div><span class="eyebrow">STUDENT OPPORTUNITIES</span><h2>Unstop Explorer</h2></div>
+          <span class="soft-chip live-chip">● Live from Unstop</span>
+        </div>
+        <p class="muted">Browse live hackathons, competitions, internships, quizzes, and scholarships directly from Unstop. Add any opportunity to your tasks or bookmark it into learning resources with one click.</p>
+        
+        <div class="unstop-toolbar">
+          <div class="unstop-tabs" id="unstopTabs">
+            <button class="tab-btn active" data-cat="hackathons" type="button">🏆 Hackathons</button>
+            <button class="tab-btn" data-cat="competitions" type="button">🎯 Competitions</button>
+            <button class="tab-btn" data-cat="internships" type="button">💼 Internships</button>
+            <button class="tab-btn" data-cat="quizzes" type="button">🧠 Quizzes</button>
+            <button class="tab-btn" data-cat="scholarships" type="button">🎓 Scholarships</button>
+          </div>
+          <form id="unstopSearchForm" class="unstop-search-form">
+            <input id="unstopSearchInput" placeholder="Filter by keyword (e.g., AI, Python, Web, IIT)...">
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
+        <div id="unstopList" class="unstop-grid">
+          <p class="muted">Loading opportunities from Unstop…</p>
+        </div>
+      </section>
+
+      <section id="scraper" class="panel">
+        <div class="section-heading"><div><span class="eyebrow">RESEARCH HELPER</span><h2>Public web page reader</h2></div><span class="soft-chip">Web scraping demo</span></div>
+        <p class="muted">Enter a public page URL or paste an Unstop link (e.g., <code>https://unstop.com/hackathons/...</code>) to extract structured details, headings, deadlines, and requirements.</p>
+        <form id="scrapeForm" class="scrape-form"><input id="scrapeUrl" type="url" placeholder="https://example.com/learning-page" required><button type="submit">Read page</button></form>
+        <div id="scrapeResult" class="scrape-result hidden" aria-live="polite"></div>
+      </section>
+      <footer>© 2026 NEXORA Student Hub · Built for learning</footer>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
